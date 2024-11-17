@@ -1,10 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" %>
+<%@ page import="metier.entities.Produit" %>
+<%@ page import ="java.util.*" %>
+
+<%List<Produit> listProd= new ArrayList<>(); %>
+<%listProd = (List<Produit>) session.getAttribute("produits");%>
+
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Produits</title>
 </head>
 <body>
 
@@ -20,7 +26,7 @@
 				<td> <input type="text" name="libelle"></td>
 			</tr>
 			<tr>
-				<td>QuantitÃ© :</td>
+				<td>Quantité :</td>
 				<td> <input type="text" name="quantite"></td>
 			</tr>
 			<tr>
@@ -38,13 +44,17 @@
 				<tr>
 					<th>Code</th>
 					<th>Libelle</th>
-					<th>QuantitÃ©</th>
+					<th>Quantité</th>
 				</tr>
+				<%for (Produit pr :listProd){%>
 				<tr>
-					<td>code1</td>
-					<td>lib1</td>
-					<td>0</td>
+					<td><%=pr.getCode()%></td>
+					<td><%=pr.getLibelle()%></td>
+					<td><%=pr.getQuantite()%></td>
 				</tr>
+				<%
+				}
+				%>
 			</table>
 		</div>
 	</form>
